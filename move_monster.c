@@ -12,39 +12,50 @@
 
 #include "so_long.h"
 
+void    ft_move_monster_left(t_data *img)
+{
+    if (img->array[img->monster_j][img->monster_i - 1] == '0')
+    {
+        img->array[img->monster_j][img->monster_i - 1] = 'M';
+        img->array[img->monster_j][img->monster_i] = '0';
+    }
+}
+
+void    ft_move_monster_right(t_data *img)
+{
+    if (img->array[img->monster_j][img->monster_i + 1] == '0')
+    {
+    img->array[img->monster_j][img->monster_i + 1] = 'M';
+    img->array[img->monster_j][img->monster_i] = '0';
+    }
+}
+
+void    ft_move_monster_up(t_data *img)
+{
+    if (img->array[img->monster_j - 1][img->monster_i] == '0')
+    {
+        img->array[img->monster_j - 1][img->monster_i] = 'M';
+        img->array[img->monster_j][img->monster_i] = '0';
+    }
+}
+
+void    ft_move_monster_down(t_data *img)
+{
+    if (img->array[img->monster_j + 1][img->monster_i] == '0')
+    {
+        img->array[img->monster_j + 1][img->monster_i] = 'M';
+        img->array[img->monster_j][img->monster_i] = '0';
+    }
+}
+
 void    ft_move_monster(t_data *img)
 {
-    printf("Pi = %d\nPj = %d\nMi = %d\nMj = %d\n\n\n", img->player_i, img->player_j, img->monster_i, img->monster_j);
     if (img->player_i < img->monster_i)
-    {
-        if (img->array[img->monster_j][img->monster_i - 1] == '0')
-        {
-            img->array[img->monster_j][img->monster_i - 1] = 'M';
-            img->array[img->monster_j][img->monster_i] = '0';
-        }
-    }
+        ft_move_monster_left(img);
     else if (img->player_i > img->monster_i)
-    {
-        if (img->array[img->monster_j][img->monster_i + 1] == '0')
-        {
-        img->array[img->monster_j][img->monster_i + 1] = 'M';
-        img->array[img->monster_j][img->monster_i] = '0';
-        }
-    }
+        ft_move_monster_right(img); 
     else if (img->player_j < img->monster_j)
-    {
-        if (img->array[img->monster_j - 1][img->monster_i] == '0')
-        {
-            img->array[img->monster_j - 1][img->monster_i] = 'M';
-            img->array[img->monster_j][img->monster_i] = '0';
-        }
-    }
+        ft_move_monster_up(img);
     else if (img->player_j > img->monster_j)
-    {
-        if (img->array[img->monster_j + 1][img->monster_i] == '0')
-        {
-            img->array[img->monster_j + 1][img->monster_i] = 'M';
-            img->array[img->monster_j][img->monster_i] = '0';
-        }
-    }
+        ft_move_monster_down(img);
 }
