@@ -6,7 +6,7 @@
 /*   By: grubin <grubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:31:50 by grubin            #+#    #+#             */
-/*   Updated: 2022/03/03 09:43:03 by grubin           ###   ########.fr       */
+/*   Updated: 2022/03/03 13:22:35 by grubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ void	ft_get_array_ber(t_data *img, int fd)
 	img->array = ft_split(str_full_ber, '\n');
 	free (str_full_ber);
 	ft_check_size_array(img);
+	close(fd);
 }
